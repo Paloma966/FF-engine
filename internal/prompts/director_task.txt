@@ -1,0 +1,89 @@
+CURRENT WORLD STATE
+===================
+Facts:
+{{range .Facts}}
+  - {{.}}
+{{end}}
+{{if not .Facts}}
+  (No facts established yet)
+{{end}}
+
+Active Threads (unresolved FutureHooks):
+{{range .Threads}}
+  - [{{.ID}}] {{.Description}}
+    Urgency: {{.Urgency}}
+    Hints at: {{.HintsAt}}
+    Planted in: {{.PlantedIn}}
+{{end}}
+{{if not .Threads}}
+  (No unresolved threads)
+{{end}}
+
+PROTAGONIST STATE
+=================
+Name: {{.Protagonist.Name}}
+Current Beliefs:
+{{range .Protagonist.Beliefs}}
+  - {{.}}
+{{end}}
+{{if not .Protagonist.Beliefs}}
+  (No established beliefs yet)
+{{end}}
+
+Goals:
+{{range .Protagonist.Goals}}
+  - {{.}}
+{{end}}
+{{if not .Protagonist.Goals}}
+  (No established goals yet)
+{{end}}
+
+Fears:
+{{range .Protagonist.Fears}}
+  - {{.}}
+{{end}}
+{{if not .Protagonist.Fears}}
+  (No established fears yet)
+{{end}}
+
+Values:
+{{range .Protagonist.Values}}
+  - {{.}}
+{{end}}
+{{if not .Protagonist.Values}}
+  (No established values yet)
+{{end}}
+
+Recent Memories:
+{{range .RecentMemories}}
+  - [from {{.EventID}}] {{.Content}}
+{{end}}
+{{if not .RecentMemories}}
+  (No memories yet)
+{{end}}
+
+RECENT TIMELINE (last {{.RecentEventCount}} events)
+==============================={{if not .RecentEvents}}
+(No events yet — this is the beginning of the story)
+{{end}}
+{{range .RecentEvents}}
+  Event: {{.ID}} - {{.Title}}
+  Chapter: {{.ChapterNum}} | Time: {{.Time}} | Tension: {{.TensionLevel}}/10 | Tone: {{.Tone}}
+  What happened: {{.Description}}
+  Fact changes:
+  {{range .FactsChanged}}    Before: {{.Before}}
+    After:  {{.After}}
+  {{end}}
+  Belief changes:
+  {{range .BeliefChanges}}    {{.Character}}: "{{.Before}}" → "{{.After}}"
+  {{end}}
+  Hooks planted: {{range .FutureHooks}}[{{.ID}}] {{.Description}}; {{end}}
+{{end}}
+
+TASK
+====
+This is Chapter {{.NextChapterNum}}. The current narrative time is {{.CurrentTime}}.
+
+Follow the seven-stage analysis framework (State Digest → Thread Inventory →
+Character Arc Status → Tension Calibration → Event Candidates → Evaluation &
+Selection → Event Detail). Output the complete structured YAML with all stages.

@@ -1,0 +1,71 @@
+CHAPTER CONTEXT
+===============
+Chapter Number: {{.ChapterNum}}
+Narrative Time: {{.Time}}
+Tone: {{.Tone}}
+POV: {{.POV}}
+Tense: {{.Tense}}
+{{if .PreviousSummary}}
+Previous Chapter Summary:
+{{.PreviousSummary}}
+{{end}}
+
+WHAT HAPPENS (Director's Scene Plan)
+====================================
+{{.Description}}
+
+Director's Intent:
+{{.DirectorIntent}}
+
+{{if .FactsChanged}}
+WORLD FACTS THAT CHANGE
+=======================
+{{range .FactsChanged}}
+  Before: {{.Before}}
+  After:  {{.After}}
+{{end}}
+{{end}}
+
+{{if .ResolvedHooks}}
+HOOKS RESOLVED IN THIS CHAPTER
+==============================
+{{range .ResolvedHooks}}
+  ✓ {{.}}
+{{end}}
+{{end}}
+
+THE PROTAGONIST'S INNER EXPERIENCE
+==================================
+Emotional Response:
+{{.EmotionalResponse}}
+
+Internal Monologue:
+{{.InternalMonologue}}
+
+Decision Made:
+{{.Decision}}
+
+{{if .NewBeliefs}}
+New Beliefs Formed:
+{{range .NewBeliefs}}
+  + {{.}}
+{{end}}
+{{end}}
+
+{{if .ModifiedBeliefs}}
+Beliefs That Shifted:
+{{range .ModifiedBeliefs}}
+  ~ {{.}}
+{{end}}
+{{end}}
+
+WRITING TASK
+============
+Write the full chapter prose. Show the event unfolding scene by scene.
+Weave the protagonist's internal experience naturally into the narrative.
+Include sensory details, dialogue where appropriate, and concrete action.
+
+End the chapter at a natural pause point. Do not resolve the entire story —
+leave threads for the next chapter. The last line should resonate.
+
+Output the chapter as markdown prose only — no YAML, no metadata.

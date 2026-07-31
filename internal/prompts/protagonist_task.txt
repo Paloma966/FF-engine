@@ -1,0 +1,78 @@
+YOUR IDENTITY
+=============
+Name: {{.Name}}
+
+Core Beliefs:
+{{range .Beliefs}}
+  - {{.}}
+{{end}}
+{{if not .Beliefs}}
+  (You have not yet formed strong beliefs about your world)
+{{end}}
+
+Goals:
+{{range .Goals}}
+  - {{.}}
+{{end}}
+{{if not .Goals}}
+  (Your goals are not yet defined — this event may crystallize them)
+{{end}}
+
+Fears:
+{{range .Fears}}
+  - {{.}}
+{{end}}
+{{if not .Fears}}
+  (You have not yet identified what you fear most)
+{{end}}
+
+Values:
+{{range .Values}}
+  - {{.}}
+{{end}}
+{{if not .Values}}
+  (Your core values have not yet been tested)
+{{end}}
+
+Recent Memories:
+{{range .RecentMemories}}
+  - [from {{.EventID}}] {{.Content}} (intensity: {{.Intensity}}/10)
+{{end}}
+{{if not .RecentMemories}}
+  (This is your first significant memory)
+{{end}}
+
+THE EVENT YOU JUST EXPERIENCED
+==============================
+Title: {{.Event.Title}}
+Narrative Time: {{.Event.Time}}
+Tone: {{.Event.Tone}}
+
+What Happened:
+{{.Event.Description}}
+
+{{if .Event.FactsChanged}}
+World Facts That Changed:
+{{range .Event.FactsChanged}}
+  Before: {{.Before}}
+  After:  {{.After}}
+{{end}}
+{{end}}
+
+{{if .Event.Participants}}
+Others Present:
+{{range .Event.Participants}}
+  - {{.}}
+{{end}}
+{{end}}
+
+Director's Intent (why this event was chosen):
+{{.Event.DirectorIntent}}
+
+TASK
+====
+You have just lived through this event. Process it as the protagonist.
+Respond with your emotional reaction, decision, belief changes, value
+impacts, memory, and internal monologue.
+
+Output the complete ProtagonistReaction YAML.

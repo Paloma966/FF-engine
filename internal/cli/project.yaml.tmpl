@@ -1,0 +1,27 @@
+project:
+  name: "{{.Name}}"
+  created_at: "{{.CreatedAt}}"
+
+story:
+  title: "{{.StoryTitle}}"
+  genre: "{{.Genre}}"
+  premise: "{{.Premise}}"
+  pov: "{{.POV}}"
+  tense: "{{.Tense}}"
+
+protagonist:
+  name: "{{.ProtagonistName}}"
+  initial_beliefs: []
+  initial_goals: []
+  initial_fears: []
+  initial_values: []
+
+llm:
+  provider: "{{.LLMProvider}}"
+  model: "{{.LLMModel}}"
+  api_key: "{{.LLMAPIKey}}"
+{{- if .LLMBaseURL }}
+  base_url: "{{.LLMBaseURL}}"
+{{- end }}
+  temperature: {{.LLMTemperature}}
+  max_tokens: {{.LLMMaxTokens}}
